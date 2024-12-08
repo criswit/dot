@@ -57,6 +57,8 @@ main() {
     install_aur_packages
 
     stow -t ~ */ --dotfiles
+
+    chsh -s $(which zsh)
 }
 
 main "$@"

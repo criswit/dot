@@ -28,7 +28,8 @@
             "extra/protonmail-bridge-core",
             "dpkg",
             "extra/feh",
-            "python-openai-whisper"
+            "python-openai-whisper",
+	    "jq"
         ],
         "yubikey": [
             "yubikey-manager",
