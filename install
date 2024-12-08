@@ -55,6 +55,8 @@ main() {
     install_pacman_packages
 
     install_aur_packages
+
+    stow -t ~ */ --dotfiles
 }
 
 main "$@"

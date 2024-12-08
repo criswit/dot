@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+
+# source alias files
+source "$HOME/.aliases"
+
+# nvm
+source /usr/share/nvm/init-nvm.sh
+
+
+# this should go at end (or pretty close)
+eval "$(starship init zsh)"
