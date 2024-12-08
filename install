@@ -1,0 +1,60 @@
+#!/bin/bash
+
+SCRIPT_NAME=$(basename "${BASH_SOURCE[0]}")
+SCRIPT_REAL_PATH="$(readlink -f -- "${BASH_SOURCE[0]}")"
+SCRIPT_DIR="$(dirname "$SCRIPT_REAL_PATH")"
+PACKAGE_ROOT="$(dirname "${SCRIPT_DIR}")"
+
+## AUR INSTALL DIRECTORY
+TMP_AUR="/tmp/aur"
+
+## install a space separated list of packages
+function pacman_install() {
+    pkgs=("$@")
+    for p in "${pkgs[@]}"; do
+        sudo pacman -S --noconfirm "$p"
+    done
+}
+
+# install a single aur package by cloning the source repo and building
+function aur_item_install() {
+    url=$1
+    name=$2
+    git clone "$url" "$TMP_AUR/$name"
+    (cd "$TMP_AUR/$name" && makepkg -sic --noconfirm --needed)
+}
+
+# fetches an array from the specified section in config
+function packages_from_config() {
+    name=$1
+    jq -r .packages."$name"[] "$SCRIPT_DIR"/config.json
+
+}
+
+function install_aur_packages() {
+    mkdir -p "$TMP_AUR"
+    jq -c '.packages.aur[]' config.json | while IFS= read -r item; do
+        url=$(echo "$item" | jq -r '.url')
+        name=$(echo "$item" | jq -r '.name')
+        aur_item_install "$url" "$name"
+    done
+    rm -rf "$TMP_AUR"
+
+}
+
+function install_pacman_packages() {
+    systemPkgs=$(packages_from_config "system")
+    langPkgs=$(packages_from_config "languages")
+
+    # ignore the double quote word splitting recomendation here; for some reason it breaks the install
+    pacman_install $systemPkgs
+    pacman_install $langPkgs
+}
+
+main() {
+    install_pacman_packages
+
+    install_aur_packages
+}
+
+main "$@"
