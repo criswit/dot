@@ -1,0 +1,58 @@
+{
+    "packages": {
+        "system": [
+            "fzf",
+            "firefox",
+            "starship",
+            "stow",
+            "man",
+            "code",
+            "wezterm",
+            "gnome-tweaks",
+            "extra/gnome-browser-connector",
+            "extra/pipewire-audio",
+            "extra/pipewire-pulse",
+            "neovim",
+            "extra/wl-clipboard",
+            "signal-desktop",
+            "wmctrl",
+            "gpaste",
+            "shellcheck",
+            "zsh",
+            "extra/otf-firamono-nerd",
+            "stylua",
+            "wmctrl",
+            "exa",
+            "pass",
+            "chromium",
+            "extra/protonmail-bridge-core",
+            "dpkg",
+            "extra/feh",
+            "python-openai-whisper"
+        ],
+        "yubikey": [
+            "yubikey-manager",
+            "gnupg",
+            "pcsclite",
+            "ccid",
+            "yubikey-personalization"
+        ],
+        "languages": [
+            "cargo",
+            "go"
+        ],
+        "aur": [
+            {
+                "url": "https://aur.archlinux.org/ulauncher.git",
+                "name": "ulauncher"
+            },
+            {
+                "url": "https://aur.archlinux.org/nvm.git",
+                "name": "nvm"
+            }
+        ],
+        "nix": [
+            "github:kamadorueda/alejandra/3.1.0"
+        ]
+    }
+}
