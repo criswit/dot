@@ -29,7 +29,16 @@
             "dpkg",
             "extra/feh",
             "python-openai-whisper",
-	    "jq"
+            "jq",
+            "lsusb",
+            "obsidian",
+            "miniupnpc",
+            "transmission-qt",
+            "jellyfin-server",
+            "nginx",
+            "jellyfin-web",
+            "jdk17-openjdk",
+            "shutter"
         ],
         "yubikey": [
             "yubikey-manager",
@@ -50,6 +59,14 @@
             {
                 "url": "https://aur.archlinux.org/nvm.git",
                 "name": "nvm"
+            },
+            {
+                "url": "https://aur.archlinux.org/aws-cli-v2.git",
+                "name": "awscli"
+            },
+            {
+                "url": "https://aur.archlinux.org/intellij-idea-ultimate-edition.git",
+                "name": "intellij"
             }
         ],
         "nix": [
