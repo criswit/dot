@@ -1,0 +1,44 @@
+#!/bin/bash
+
+set -o pipefail
+
+SCRIPT_NAME=$(basename "${BASH_SOURCE[0]}")
+SCRIPT_REAL_PATH="$(readlink -f -- "${BASH_SOURCE[0]}")"
+SCRIPT_DIR="$(dirname "$SCRIPT_REAL_PATH")"
+PACKAGE_ROOT="$(dirname "${SCRIPT_DIR}")"
+
+source "${PACKAGE_ROOT}/lib/logger.sh"
+source "${PACKAGE_ROOT}/lib/core-tools.sh"
+
+install_packages() {
+    log_info "installing packages from apt"
+    for pkg in $(jq -r .apt_packages[] "$PACKAGE_ROOT/config.json"); do
+        log_info "will install package $pkg"
+        sudo apt install -y $pkg
+        if [[ $? -ne 0 ]]; then
+            log_error "received error installing package $pkg"
+            exit 1
+        fi
+    done
+}
+
+core_tools() {
+    #install_signal
+    #install_ulauncher
+    #install_starship
+    #install_wezterm
+    #install_neovim
+    #install_go
+    #install_idea
+    install_nvm
+}
+
+main() {
+    install_packages
+    core_tools
+    nvm install 
+    stow -t ~ */ --dotfiles
+    chsh -s $(which zsh)
+}
+
+main "$@"

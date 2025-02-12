@@ -1,76 +1,13 @@
 {
-    "packages": {
-        "system": [
-            "fzf",
-            "firefox",
-            "starship",
-            "stow",
-            "man",
-            "code",
-            "wezterm",
-            "gnome-tweaks",
-            "extra/gnome-browser-connector",
-            "extra/pipewire-audio",
-            "extra/pipewire-pulse",
-            "neovim",
-            "extra/wl-clipboard",
-            "signal-desktop",
-            "wmctrl",
-            "gpaste",
-            "shellcheck",
-            "zsh",
-            "extra/otf-firamono-nerd",
-            "stylua",
-            "wmctrl",
-            "exa",
-            "pass",
-            "chromium",
-            "extra/protonmail-bridge-core",
-            "dpkg",
-            "extra/feh",
-            "python-openai-whisper",
-            "jq",
-            "lsusb",
-            "obsidian",
-            "miniupnpc",
-            "transmission-qt",
-            "jellyfin-server",
-            "nginx",
-            "jellyfin-web",
-            "jdk17-openjdk",
-            "shutter"
-        ],
-        "yubikey": [
-            "yubikey-manager",
-            "gnupg",
-            "pcsclite",
-            "ccid",
-            "yubikey-personalization"
-        ],
-        "languages": [
-            "cargo",
-            "go"
-        ],
-        "aur": [
-            {
-                "url": "https://aur.archlinux.org/ulauncher.git",
-                "name": "ulauncher"
-            },
-            {
-                "url": "https://aur.archlinux.org/nvm.git",
-                "name": "nvm"
-            },
-            {
-                "url": "https://aur.archlinux.org/aws-cli-v2.git",
-                "name": "awscli"
-            },
-            {
-                "url": "https://aur.archlinux.org/intellij-idea-ultimate-edition.git",
-                "name": "intellij"
-            }
-        ],
-        "nix": [
-            "github:kamadorueda/alejandra/3.1.0"
-        ]
-    }
+    "apt_packages": [
+        "wget",
+        "shfmt",
+        "stow",
+        "zsh",
+        "gcc",
+        "clang",
+        "make",
+        "fzf",
+        "fuse"
+    ]
 }

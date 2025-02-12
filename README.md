@@ -1,2 +1,0 @@
-# dot
-not a rapper

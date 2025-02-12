@@ -5,8 +5,10 @@
 source "$HOME/.aliases"
 
 # nvm
-source /usr/share/nvm/init-nvm.sh
+source "$HOME/.nvm/nvm.sh" 
 
+# go
+export PATH=$PATH:/usr/local/go/bin
 
 # this should go at end (or pretty close)
 eval "$(starship init zsh)"
