@@ -9,5 +9,8 @@
         "make",
         "fzf",
         "fuse"
+    ],
+    "fonts": [
+        "JetBrainsMono"
     ]
 }

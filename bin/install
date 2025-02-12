@@ -22,21 +22,44 @@ install_packages() {
     done
 }
 
+install_fonts() {
+    log_info "installing fonts..."
+    local version='2.1.0'
+    local fonts_dir="${HOME}/.local/share/fonts"
+    if [[ ! -d "$fonts_dir" ]]; then
+        mkdir -p "$fonts_dir"
+    fi
+    for font in $(jq -r .fonts[] "$PACKAGE_ROOT/config.json"); do
+        zip_file="${font}.zip"
+        download_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v${version}/${zip_file}"
+        local "Downloading $download_url"
+        wget "$download_url"
+        unzip "$zip_file" -d "$fonts_dir"
+        rm "$zip_file"
+    done
+
+    find "$fonts_dir" -name '*Windows Compatible*' -delete
+
+    fc-cache -fv
+
+}
+
 core_tools() {
-    #install_signal
-    #install_ulauncher
-    #install_starship
-    #install_wezterm
-    #install_neovim
-    #install_go
-    #install_idea
+    install_signal
+    install_ulauncher
+    install_starship
+    install_wezterm
+    install_neovim
+    install_go
+    install_idea
     install_nvm
 }
 
 main() {
+    install_fonts
     install_packages
     core_tools
-    nvm install 
+    nvm install
     stow -t ~ */ --dotfiles
     chsh -s $(which zsh)
 }
